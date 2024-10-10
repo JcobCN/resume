@@ -90,116 +90,116 @@ export const Template3: React.FC<Props> = props => {
   return (
     <div className="template3-resume resume-content">
       <div className="basic-info">
-        {/* <CardWrapper title="个人信息" className="profile" color={theme.color}> */}
-        <div className="profile">
-          {profile?.name && <div className="name">{profile.name}</div>}
-          <div className="profile-list">
-            {profile?.mobile && (
-              <div className="mobile">
-                <PhoneFilled style={{ color: theme.color, opacity: 0.85 }} />
-                {profile.mobile}
-              </div>
+        {/* 头像 */}
+        {/* <div className='' style={{display: 'flex'}}> */}
+        <div className="split">
+          <div
+            style={
+              {
+                // display: 'flex',
+                // justifyContent: 'space-evenly',
+                // alignItems: 'center'
+              }
+            }
+          >
+            {!value?.avatar?.hidden && (
+              // <Avatar
+              //   avatarSrc={value?.avatar?.src}
+              //   className="avatar"
+              //   shape={value?.avatar?.shape}
+              //   size={value?.avatar?.size}
+              // />
+              <img
+                style={{ borderRadius: '50%' }}
+                src={value?.avatar?.src}
+              ></img>
             )}
-            {profile?.email && (
-              <div className="email">
-                <MailFilled style={{ color: theme.color, opacity: 0.85 }} />
-                {profile.email}
-              </div>
-            )}
-            {profile?.github && (
-              <div className="github">
-                <GithubFilled style={{ color: theme.color, opacity: 0.85 }} />
-                <span
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    window.open(profile.github);
-                  }}
-                >
-                  {profile.github}
-                </span>
-              </div>
-            )}
-            {profile?.zhihu && (
-              <div className="github">
-                <ZhihuCircleFilled
-                  style={{ color: theme.color, opacity: 0.85 }}
-                />
-                <span
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    window.open(profile.zhihu);
-                  }}
-                >
-                  {profile.zhihu}
-                </span>
-              </div>
-            )}
-            {profile?.workExpYear && (
-              <div className="work-exp-year">
-                <ScheduleFilled style={{ color: theme.color, opacity: 0.85 }} />
-                <span>
-                  <FormattedMessage id="工作经验" />: {profile.workExpYear}
-                </span>
-              </div>
-            )}
-            {profile?.workPlace && (
-              <div className="work-place">
-                <EnvironmentFilled
-                  style={{ color: theme.color, opacity: 0.85 }}
-                />
-                <span>
-                  <FormattedMessage id="期望工作地" />: {profile.workPlace}
-                </span>
-              </div>
-            )}
-            {profile?.positionTitle && (
-              <div className="expect-job">
-                <HeartFilled style={{ color: theme.color, opacity: 0.85 }} />
-                <span>
-                  <FormattedMessage id="职位" />: {profile.positionTitle}
-                </span>
-              </div>
-            )}
+          </div>
+          {/* <CardWrapper title="个人信息" className="profile" color={theme.color}> */}
+          <div className="profile">
+            {profile?.name && <div className="name">{profile.name}</div>}
+            <div className="profile-list">
+              {profile?.mobile && (
+                <div className="mobile">
+                  <PhoneFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  {profile.mobile}
+                </div>
+              )}
+              {profile?.email && (
+                <div className="email">
+                  <MailFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  {profile.email}
+                </div>
+              )}
+              {profile?.github && (
+                <div className="github">
+                  <GithubFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      window.open(profile.github);
+                    }}
+                  >
+                    {profile.github}
+                  </span>
+                </div>
+              )}
+              {profile?.zhihu && (
+                <div className="github">
+                  <ZhihuCircleFilled
+                    style={{ color: theme.color, opacity: 0.85 }}
+                  />
+                  <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      window.open(profile.zhihu);
+                    }}
+                  >
+                    {profile.zhihu}
+                  </span>
+                </div>
+              )}
+              {profile?.workExpYear && (
+                <div className="work-exp-year">
+                  <ScheduleFilled
+                    style={{ color: theme.color, opacity: 0.85 }}
+                  />
+                  <span>
+                    <FormattedMessage id="工作经验" />: {profile.workExpYear}
+                  </span>
+                </div>
+              )}
+              {profile?.workPlace && (
+                <div className="work-place">
+                  <EnvironmentFilled
+                    style={{ color: theme.color, opacity: 0.85 }}
+                  />
+                  <span>
+                    <FormattedMessage id="期望工作地" />: {profile.workPlace}
+                  </span>
+                </div>
+              )}
+              {profile?.positionTitle && (
+                <div className="expect-job">
+                  <HeartFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  <span>
+                    <FormattedMessage id="职位" />: {profile.positionTitle}
+                  </span>
+                </div>
+              )}
+              {profile?.positionTitle && (
+                <div className="expect-job">
+                  {/* <HeartFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  <span>
+                    <FormattedMessage id=" " />: {profile.positionTitle}
+                  </span> */}
+                </div>
+              )}
+            </div>
           </div>
         </div>
         {/* </CardWrapper> */}
-        {/* 教育背景 */}
-        {educationList?.length ? (
-          <CardWrapper
-            // title=<FormattedMessage id="教育背景" />
-            title={titleNameMap.educationList}
-            className="section section-education"
-            color={theme.color}
-          >
-            {educationList.map((education, idx) => {
-              const [start, end] = education.edu_time;
-              return (
-                <div key={idx.toString()} className="education-item">
-                  <div>
-                    <span>
-                      <b>{education.school}</b>
-                      <span style={{ marginLeft: '8px' }}>
-                        {education.major && <span>{education.major}</span>}
-                        {education.academic_degree && (
-                          <span
-                            className="sub-info"
-                            style={{ marginLeft: '4px' }}
-                          >
-                            ({education.academic_degree})
-                          </span>
-                        )}
-                      </span>
-                    </span>
-                    <span className="sub-info" style={{ float: 'right' }}>
-                      {start}
-                      {end ? ` ~ ${end}` : <FormattedMessage id=" 至今" />}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </CardWrapper>
-        ) : null}
+
         {workList?.length ? (
           <CardWrapper
             // title=<FormattedMessage id="个人作品" />
@@ -368,6 +368,45 @@ export const Template3: React.FC<Props> = props => {
               </div>
             )
           : null}
+      </div>
+      <div className="basic-info">
+        {/* 教育背景 */}
+        {educationList?.length ? (
+          <CardWrapper
+            // title=<FormattedMessage id="教育背景" />
+            title={titleNameMap.educationList}
+            className="section section-education"
+            color={theme.color}
+          >
+            {educationList.map((education, idx) => {
+              const [start, end] = education.edu_time;
+              return (
+                <div key={idx.toString()} className="education-item">
+                  <div>
+                    <span>
+                      <b>{education.school}</b>
+                      <span style={{ marginLeft: '8px' }}>
+                        {education.major && <span>{education.major}</span>}
+                        {education.academic_degree && (
+                          <span
+                            className="sub-info"
+                            style={{ marginLeft: '4px' }}
+                          >
+                            ({education.academic_degree})
+                          </span>
+                        )}
+                      </span>
+                    </span>
+                    <span className="sub-info" style={{ float: 'right' }}>
+                      {start}
+                      {end ? ` ~ ${end}` : <FormattedMessage id=" 至今" />}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </CardWrapper>
+        ) : null}
       </div>
     </div>
   );
