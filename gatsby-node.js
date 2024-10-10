@@ -1,4 +1,5 @@
 const path = require('path');
+const {ESBuildPlugin, ESBuildMinifyPlugin} = require('esbuild-loader')
 
 exports.onCreateWebpackConfig = ({ actions, loaders, stage, getConfig }) => {
   const config = getConfig();
@@ -24,9 +25,21 @@ exports.onCreateWebpackConfig = ({ actions, loaders, stage, getConfig }) => {
           {
             test: /bad-module/,
             use: loaders.null(),
+            loader: 'esbuild-loader',
           },
         ],
       },
+      optimization:{
+        minimize: true,
+        minimizer: [
+            new ESBuildMinifyPlugin({
+                target: 'es2015'
+            })
+        ]
+    },
+    plugins: [
+        new ESBuildPlugin()
+    ]
     });
   }
 };
